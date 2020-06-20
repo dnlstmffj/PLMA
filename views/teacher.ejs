@@ -1,0 +1,62 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">교사 관리</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTeacherDialog">
+                    새 교사 추가
+                </button>
+                <br>
+            
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                   <th>ID</th>
+                   <th>성명</th>
+                   <th>부서</th>
+                   
+                   <th>#</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<data.length; i++) { %>
+                    <% if(data[i].dpc) continue;%>
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].job%></td>
+                    
+                    <td><button  data-toggle="modal" data-target="#editTeacherDialog" type="button" class="btn btn-primary btn-sm" onclick="getTeacher(<%=data[i].id%>)">수정</button>&nbsp;&nbsp;<button onClick="deleteTeacher(<%=data[i].id%>)" type="button" class="btn btn-danger btn-sm">삭제</button></td>
+                </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var sum = 0, psum=0;
+    document.getElementById('teacherMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('schoolMenu').setAttribute('class', 'nav-link active');
+    var table = $("#table").DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+
+    });
+    
+    
+
+</script>

@@ -1,0 +1,151 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">전체 학생 상벌점 부여</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div style="width:100%; display:flex;">
+                    <div class="input-group" style="display:inline-flex; width:60%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">학년</span>
+                        </div>
+                        <input id="grade" type="number" class="form-control" placeholder="조건 없음" aria-label="ㅈㅎㄱ" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:60%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">반</span>
+                        </div>
+                        <input id="class" type="number" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:70%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">번호</span>
+                        </div>
+                        <input id="num" type="number" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">부여 사유</span>
+                        </div>
+                        <select id="reason" name="job" class="form-control" onchange="autoSet()" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                            <option value="">사유 선택</option>
+                            <% for(var i=0; i<reasons.length; i++) { %>
+                            <option value="<%=reasons[i].id%>" ><%=reasons[i].title%></option>
+                            <% } %>
+                        </select>
+                       
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:60%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">상점</span>
+                        </div>
+                        <input id="plus" type="number" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:60%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">벌점</span>
+                        </div>
+                        <input id="minus" type="number" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    
+                    
+                </div><br>
+                <button id="add" type="button" class="btn btn-primary" onClick="addApply()">추가</button><br>
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                    <th>학년</th>
+                    <th>반</th>
+                    <th>번호</th>
+               
+                    <th>상점</th>
+                    <th>벌점</th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+      
+                </tbody>
+                </table>
+                <br><br>
+                <button id="apply" type="button" class="btn btn-primary" onClick="apply()">적용</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var sum = 0, psum=0;
+    document.getElementById('applyMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('manageMenu').setAttribute('class', 'nav-link active');
+    var table = $("#table").DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+
+    });
+    
+    document.getElementById('grade').focus();
+    document.getElementById('grade').onkeyup = function() {
+         if(document.getElementById('grade').value.length >= 1) {
+            document.getElementById('class').focus();
+        }
+    };
+    document.getElementById('class').onkeyup = function() {
+        
+        if(document.getElementById('class').value.length >= 1) {
+            document.getElementById('num').focus();
+        }
+    };
+    document.getElementById('num').onkeyup = function() {
+        //if(e.keyCode == 8)  console.log("OK") }
+        if(document.getElementById('num').value.length > 1) {
+            document.getElementById('plus').focus();
+          
+        }
+        
+        
+        
+    };
+    document.getElementById('plus').onkeyup = function() {
+        if(document.getElementById('plus').value.length > 1) {
+            document.getElementById('minus').focus();
+          
+        }
+    };
+   $("#minus").keyup(function(e){if(e.keyCode == 13)  addApply() });
+   
+    function apply() {
+        var tableData = table.data();
+        for(var i=0; i<=tableData.length; i++) {
+        
+            console.log(tableData[0]);
+            $.ajax({
+                url: '/submit_apply',
+                type : "POST",
+                data : {
+                    grade: tableData[i][0],
+                    class: tableData[i][1],
+                    num: tableData[i][2],
+                    plus: tableData[i][3],
+                    minus: tableData[i][4],
+                    reason: tableData[i][5]
+                }
+            }).done(function(results) {
+                console.log(results);
+    
+            });
+        }
+    }
+
+
+</script>

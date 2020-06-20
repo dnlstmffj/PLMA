@@ -1,0 +1,61 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">상벌점 부여 사유 관리</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newReasonDialog" >
+                    새 사유 추가
+                </button>
+                  
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                   <th>ID</th>
+                   <th>사유</th>
+                   <th>상점</th>
+                   <th>벌점</th>
+                   <th>#</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<data.length; i++) { %>
+                    <% if(data[i].dpc) continue;%>
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].title%></td>
+                    <td><%=data[i].plus%></td>
+                    <td><%=data[i].minus%></td>
+                    <td><button  data-toggle="modal" data-target="#editReasonDialog" type="button" class="btn btn-primary btn-sm" onClick="getReason(<%=data[i].id%>)">수정</button>&nbsp;&nbsp;<button onClick="deleteReason(<%=data[i].id%>)" type="button" class="btn btn-danger btn-sm">삭제</button></td>
+                </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var sum = 0, psum=0;
+    document.getElementById('reasonMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('manageMenu').setAttribute('class', 'nav-link active');
+    var table = $("#table").DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+
+    });
+    
+    
+
+</script>

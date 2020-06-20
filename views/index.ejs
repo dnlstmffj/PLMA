@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>PLMA - 순천향림중학교 상벌점 관리</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/sp-1.0.1/sl-1.3.1/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/sp-1.0.1/sl-1.3.1/datatables.min.js"></script>
+</head>
+<body class="hold-transition sidebar-mini">
+  
+
+ 
+
+
+<div class="wrapper">
+  <div id="mask"></div>
+      <div id="popup" class="popup"> 
+       
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+    <style type="text/css">
+    	.st0{fill:none;stroke:#2279BF;stroke-width:2;stroke-miterlimit:10;}
+    	.st1{clip-path:url(#SVGID_2_);}
+    	.st2{fill:#87CDAE;stroke:#2279BF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+    	.st3{fill:none;stroke:#87CDAE;stroke-width:2;stroke-linecap:square;stroke-miterlimit:10;}
+    	.st4{fill:#87CDAE;}
+    	.st5{fill:#FFFFFF;}
+    </style>
+    <path class="st0" d="M48.8,83.4L20.2,66.9c-0.4-0.2-0.7-0.7-0.7-1.2v-33c0-0.5,0.3-0.9,0.7-1.2l28.6-16.5c0.4-0.2,1-0.2,1.4,0
+    	l28.6,16.5c0.4,0.2,0.7,0.7,0.7,1.2v33c0,0.5-0.3,0.9-0.7,1.2L50.2,83.4C49.8,83.7,49.2,83.7,48.8,83.4z"/>
+    <g>
+    	<defs>
+    		<path id="SVGID_1_" d="M48.8,82.3L21.2,66.3c-0.4-0.2-0.7-0.7-0.7-1.2V33.2c0-0.5,0.3-0.9,0.7-1.2l27.6-15.9c0.4-0.2,1-0.2,1.4,0
+    			l27.6,15.9c0.4,0.2,0.7,0.7,0.7,1.2v31.9c0,0.5-0.3,0.9-0.7,1.2L50.2,82.3C49.8,82.5,49.2,82.5,48.8,82.3z"/>
+    	</defs>
+    	<clipPath id="SVGID_2_">
+    		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+    	</clipPath>
+    	<g class="st1">
+       <g class="cboard"> 
+    		<path class="st0" d="M66.3,33.3h9.6c2.1,0,3.8,1.7,3.8,3.8v50.8H34.8V37.1c0-2.1,1.7-3.8,3.8-3.8h8.9"/>
+    		<path class="st2" d="M65.2,37.2H48.6c-1,0-1.7-0.9-1.5-1.9l1.4-7.5c0.1-0.7,0.8-1.3,1.5-1.3h13.7c0.8,0,1.4,0.5,1.5,1.3l1.4,7.5
+    			C66.9,36.3,66.1,37.2,65.2,37.2z"/>
+    		<g>
+    			<polyline class="st3" points="41.1,46.6 42.6,48.1 46.6,44.1 			"/>
+    		</g>
+    		<g>
+    			<g>
+    				<line class="st3" x1="41.3" y1="59.3" x2="45.3" y2="55.4"/>
+    				<line class="st3" x1="45.3" y1="59.3" x2="41.3" y2="55.4"/>
+    			</g>
+    		</g>
+    		<g>
+    			<polyline class="st3" points="41.1,69.1 42.6,70.5 46.6,66.6 			"/>
+    		</g>
+    		<g>
+    			<polyline class="st3" points="41.1,80.3 42.6,81.8 46.6,77.8 			"/>
+    		</g>
+    		<g>
+    			<rect x="57.7" y="43.6" class="st4" width="17" height="2.2"/>
+    			<rect x="50" y="43.6" class="st4" width="5.9" height="2.2"/>
+    			<rect x="50" y="47.1" class="st4" width="9.5" height="2.2"/>
+    			<rect x="61.3" y="47.1" class="st4" width="10.7" height="2.2"/>
+    		</g>
+    		<g>
+    			<rect x="57.7" y="57.9" class="st4" width="8.5" height="2.2"/>
+    			<rect x="67.6" y="57.9" class="st4" width="7.7" height="2.2"/>
+    			<rect x="50" y="57.9" class="st4" width="5.9" height="2.2"/>
+    			<rect x="50" y="54.3" class="st4" width="9.5" height="2.2"/>
+    			<rect x="61.3" y="54.3" class="st4" width="10.7" height="2.2"/>
+    		</g>
+    		<g>
+    			<rect x="54.7" y="69.4" class="st4" width="13.5" height="2.2"/>
+    			<rect x="69.6" y="69.4" class="st4" width="5.7" height="2.2"/>
+    			<rect x="50" y="69.4" class="st4" width="2.9" height="2.2"/>
+    			<rect x="50" y="65.8" class="st4" width="15.5" height="2.2"/>
+    			<rect x="67.3" y="65.8" class="st4" width="4.7" height="2.2"/>
+    		</g>
+    		<g>
+    			<rect x="54.7" y="80.4" class="st4" width="13.5" height="2.2"/>
+    			<rect x="69.6" y="80.4" class="st4" width="5.7" height="2.2"/>
+    			<rect x="50" y="80.4" class="st4" width="2.9" height="2.2"/>
+    			<rect x="50" y="76.8" class="st4" width="15.5" height="2.2"/>
+    			<rect x="67.3" y="76.8" class="st4" width="4.7" height="2.2"/>
+    		</g>
+    		</g>
+    	</g>
+    </g>
+    <g>
+    	<path class="st5" d="M22.3,76.4l0.1-37.7c0-2.4,2.2-4.4,4.9-4.4c2.7,0,4.9,2,4.9,4.4l-0.1,37.8l-4.7,8.2L22.3,76.4z"/>
+    	<path class="st2" d="M27.3,79.9l-2.5-5.7l0.1-34.3c0-1.3,1.1-2.4,2.4-2.4h0c1.3,0,2.4,1.1,2.4,2.4l-0.1,34.4L27.3,79.9z"/>
+    	<path class="st2" d="M25,73.3c0,0,2-1,4.4,0"/>
+    	<line class="st2" x1="24.9" y1="44.4" x2="29.7" y2="44.4"/>
+    </g> 
+    </svg>  
+        불러오는중...
+    </div>   
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+    
+      <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+          
+          <span class="d-none d-md-inline">Alexander Pierce</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <!-- User image -->
+          <li class="user-header bg-primary">
+            <img src="./top_logo.png" style="width:240px; height:60px;" alt="User Image">
+            <p>
+              <h5>강창완</h5>
+              <h7>학생생활안전부</h7>
+            </p>
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <a href="#" class="btn btn-default btn-flat ">로그아웃</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="./top_logo.png" style="width:215px; height:50px;" alt="User Image">
+    </a>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a id="manageMenu" href="#" class="nav-link">
+              <i class="nav-icon fas fa-gift"></i>
+              <p>
+                상벌점 관리
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="viewMenu" href="/view" class="nav-link">
+                  <i class="far fa-print nav-icon"></i>
+                  <p>상벌점 조회</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="applyMenu" href="/apply" class="nav-link">
+                  <i class="far fa-stamp nav-icon"></i>
+                  <p>상벌점 부여</p>
+                </a>
+              </li><li class="nav-item">
+                <a id="historyMenu" href="/history" class="nav-link">
+                  <i class="far fa-stamp nav-icon"></i>
+                  <p>상벌점 기록</p>
+                </a>
+              </li>
+              </li><li class="nav-item">
+                <a id="reasonMenu" href="/reason" class="nav-link">
+                  <i class="far fa-stamp nav-icon"></i>
+                  <p>사유 관리</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a id="schoolMenu" href="#" class="nav-link">
+              <i class="nav-icon fas fa-gift"></i>
+              <p>
+                학교 관리
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="studentMenu" href="/student" class="nav-link">
+                  <i class="far fa-print nav-icon"></i>
+                  <p>학생관리</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="teacherMenu" href="/teacher" class="nav-link">
+                  <i class="far fa-stamp nav-icon"></i>
+                  <p>교사관리</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      
+    </div>
+    <!-- /.content-header -->
+    <div class="content">
+      <div class="container-fluid">
+        <% if ( page == "home" ) { %>
+        <% include ./home.ejs %>
+        <% } else if(page == "view") { %>
+        <% include ./view.ejs %>
+        <% } else if(page == "apply") { %>
+        <% include ./apply.ejs %>
+        <% } else if(page == "history") { %>
+        <% include ./history.ejs %>
+        <% } else if(page == "reason") { %>
+        <% include ./reason.ejs %>
+        <% } else if(page == "student") { %>
+        <% include ./student.ejs %>
+        <% } else if(page == "teacher") { %>
+        <% include ./teacher.ejs %>
+        <% } %>
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      시스템 제작: 강창완 (순천향림중 2-2)
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2020 <a href="https://smcolon.kr">세미콜론</a>.</strong> 모든 권리 보유.
+  </footer>
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="newReasonDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >새 사유 추가</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>사유</label>
+                <input id="newReasonDialogReason" type="text"  class="form-control">
+              </div>
+              <div class="form-group">
+                <label>상점</label>
+                <input id="newReasonDialogPlus" type="number" value="0" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>벌점</label>
+                <input id="newReasonDialogMinus" type="number" value="0" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onClick="addReason()">생성</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editReasonDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >사유 수정</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>사유</label>
+                <input id="editReasonDialogReason" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>상점</label>
+                <input id="editReasonDialogPlus" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>벌점</label>
+                <input id="editReasonDialogMinus" type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="editReason()">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newStudentDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >새 학생 추가</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>학번</label>
+                <input id="newStudentDialogStuid" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>학년</label>
+                <input id="newStudentDialogGrade" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>반</label>
+                <input id="newStudentDialogClass" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>번호</label>
+                <input id="newStudentDialogNum" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>이름</label>
+                <input id="newStudentDialogName" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="addStudent()">생성</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editStudentDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >학생 수정</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>학번</label>
+                <input id="editStudentDialogStuid" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>학년</label>
+                <input id="editStudentDialogGrade" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>반</label>
+                <input id="editStudentDialogClass" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>번호</label>
+                <input id="editStudentDialogNum" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>이름</label>
+                <input id="editStudentDialogName" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>상점</label>
+                <input id="editStudentDialogPlus" type="number" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>벌점</label>
+                <input id="editStudentDialogMinus" type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="editStudent()">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newTeacherDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >새 교사 추가</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>성명</label>
+                <input id="newTeacherDialogName" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>부서</label>
+                <input id="newTeacherDialogJob" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>비밀번호</label>
+                <input id="newTeacherDialogPassword" type="password" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="addTeacher()">생성</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTeacherDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >교사 수정</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- text input -->
+              <div class="form-group">
+                <label>성명</label>
+                <input id="editTeacherDialogName" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>부서</label>
+                <input id="editTeacherDialogJob" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>비밀번호</label>
+                <input id="editTeacherDialogPassword" type="password" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="editTeacher()">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="./javascripts/main.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+ 
+</body>
+</html>

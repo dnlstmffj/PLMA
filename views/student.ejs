@@ -1,0 +1,64 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">학생 관리</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStudentDialog">
+                    새 학생 추가
+                </button>
+                <br>
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                    <th>ID</th>
+                    <th>학번</th>
+                    <th>학년</th>
+                    <th>반</th>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>상점</th>
+                    <th>벌점</th>
+                    <th>#</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<data.length; i++) { %>
+                
+                        <tr>
+                            <td><%=data[i].id%></td>
+                            <td><%=data[i].stuid%></td>
+                            <td><%=data[i].grade%></td>
+                            <td><%=data[i].class%></td>
+                            <td><%=data[i].num%></td>
+                            <td><%=data[i].name%></td>
+                            <td><%=data[i].plus%></td>
+                            <td><%=data[i].minus%></td>
+                            <td><button  data-toggle="modal" data-target="#editStudentDialog" type="button" class="btn btn-primary btn-sm" onclick="getStudent(<%=data[i].id%>)">수정</button>&nbsp;&nbsp;<button onClick="deleteStudent(<%=data[i].id%>)" type="button" class="btn btn-danger btn-sm">삭제</button></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var sum = 0, psum=0;
+    document.getElementById('studentMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('schoolMenu').setAttribute('class', 'nav-link active');
+    var table = $("#table").DataTable({
+      
+
+    });
+    
+    
+
+</script>

@@ -1,0 +1,120 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">전체 학생 상벌점 조회</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div style="width:100%; display:flex;">
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">학년</span>
+                        </div>
+                        <input id="grade" type="text" class="form-control" placeholder="조건 없음" aria-label="ㅈㅎㄱ" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">반</span>
+                        </div>
+                        <input id="class" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">번호</span>
+                        </div>
+                        <input id="num" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">상점 +</span>
+                        </div>
+                        <input id="mp" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">상점 -</span>
+                        </div>
+                        <input id="lp" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">벌점 +</span>
+                        </div>
+                        <input id="mm" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">벌점 -</span>
+                        </div>
+                        <input id="lm" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">합계 +</span>
+                        </div>
+                        <input id="ms" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    <div class="input-group" style="display:inline-flex; width:100%;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">합계 -</span>
+                        </div>
+                        <input id="ls" type="text" class="form-control" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+                    </div>&nbsp;
+                    
+                </div><br>
+                <button type="button" class="btn btn-primary" onClick="getUser()">조회</button><br>
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                    <th>학년</th>
+                    <th>반</th>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>상점</th>
+                    <th>벌점</th>
+                    <th>합계</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<users.length; i++) { %>
+                <tr>
+                    <td><%=users[i].grade%></td>
+                    <td><%=users[i].class%></td>
+                    <td><%=users[i].num%></td>
+                    <td><%=users[i].name%></td>
+                    <td><%=users[i].plus%></td>
+                    <td><%=users[i].minus%></td>
+                    <td><%=users[i].plus - users[i].minus%></td>
+                </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('viewMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('manageMenu').setAttribute('class', 'nav-link active');
+    
+    var table = $("#table").DataTable({
+      dom: 'Bfrtip',
+      
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Data export'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Data export'
+            }
+        ],
+
+    });
+</script>

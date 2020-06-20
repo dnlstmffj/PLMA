@@ -1,0 +1,119 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">전체 학생 상벌점 기록</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <button id="add" type="button" class="btn btn-primary" onClick="addApply()">재조회</button><br>
+                <table id="table" class="table table-bordered table-striped">
+                <thead>
+                    
+                    <br>
+                <tr>
+                    <th>ID</th>
+                    <th>일시</th>
+                    <th>권한자</th>
+                    <th>학생</th>
+                    <th>처리 후 상점</th>
+                    <th>처리 전 싱점</th>
+                    <th>처리 후 벌점</th>
+                    <th>처리 전 벌점</th>
+                    <th>부여 사유</th>
+                    <th>#</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<data.length; i++) { %>
+                  
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].date%></td>
+                    <td><%=teacherData[data[i].teacher].name%></td>
+                    <td><%=userData[data[i].user].name%>(<%=data[i].user%>)</td>
+                    <td><%=data[i].afterplus%></td>
+                    <td><%=data[i].beforeplus%></td>
+                    <td><%=data[i].afterminus%></td>
+                    <td><%=data[i].beforeminus%></td>
+                    <td><%=reasonData[data[i].reason].title%></td>
+                    <td><button onClick="deleteHistory(<%=data[i].id%>)" type="button" class="btn btn-danger btn-sm">삭제</button></td>
+                </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var sum = 0, psum=0;
+    document.getElementById('historyMenu').setAttribute('class', 'nav-link active');
+    document.getElementById('manageMenu').setAttribute('class', 'nav-link active');
+    var table = $("#table").DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+      'order': [[ 0, "desc" ]]
+    });
+    
+    document.getElementById('grade').focus();
+    document.getElementById('grade').onkeyup = function() {
+         if(document.getElementById('grade').value.length >= 1) {
+            document.getElementById('class').focus();
+        }
+    };
+    document.getElementById('class').onkeyup = function() {
+        
+        if(document.getElementById('class').value.length >= 1) {
+            document.getElementById('num').focus();
+        }
+    };
+    document.getElementById('num').onkeyup = function() {
+        //if(e.keyCode == 8)  console.log("OK") }
+        if(document.getElementById('num').value.length > 1) {
+            document.getElementById('plus').focus();
+          
+        }
+        
+        
+        
+    };
+    document.getElementById('plus').onkeyup = function() {
+        if(document.getElementById('plus').value.length > 1) {
+            document.getElementById('minus').focus();
+          
+        }
+    };
+   $("#minus").keyup(function(e){if(e.keyCode == 13)  addApply() });
+   
+    function apply() {
+        var tableData = table.data();
+        for(var i=0; i<=tableData.length; i++) {
+        
+            console.log(tableData[0]);
+            $.ajax({
+                url: '/submit_apply',
+                type : "POST",
+                data : {
+                    grade: tableData[i][0],
+                    class: tableData[i][1],
+                    num: tableData[i][2],
+                    plus: tableData[i][3],
+                    minus: tableData[i][4],
+                }
+            }).done(function(results) {
+                console.log(results);
+    
+            });
+        }
+    }
+
+
+</script>
