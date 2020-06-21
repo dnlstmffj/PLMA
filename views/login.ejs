@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Log in</title>
+  <title>순천향림중학교 상벌점 관리 - 로그인</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,17 +28,18 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">교사 계정으로 로그인해주세요.</p>
 
-      <form action="../../index3.html" method="post">
+
         <div class="input-group mb-3">
-          <select id="reason" name="job" class="form-control" onchange="autoSet()" placeholder="조건 없음" aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
-            <option value="">[학생생활안전부] 허정숙</option>
-            <option value="">[학생생활안전부] 강창완</option>
-            <option value="">[교육지도부] 이재형</option>
+          <select id="loginId" name="job" class="form-control"  aria-label="조건 없음" aria-describedby="addon-wrapping" style='display:inline-block;'>
+            <option>교사를 선택하세요.</option>
+            <% for(i=0; i<data.length; i++) { %>
+              <option value="<%=data[i].id%>">[<%=data[i].job%>] <%=data[i].name%></option>
+            <% } %>
         </select>
           
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="비밀번호">
+          <input id="loginPassword" type="password" class="form-control" placeholder="비밀번호">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -49,12 +50,11 @@
         
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">로그인</button>
+            <button type="submit" class="btn btn-primary btn-block" onclick="login()">로그인</button>
           </div>
           <!-- /.col -->
         </div>
-      </form>
-
+    
 
       <br>
       <p class="mb-0">
@@ -65,9 +65,45 @@
   </div>
 </div>
 <!-- /.login-box -->
-
-<!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
+<script>
+  $("#loginPassword").keyup(function(e){if(e.keyCode == 13)  login() });
+  function login() {
+    var regExpNumber = /^[0-9]+$/;
+    var id = document.getElementById('loginId').value;
+    var password = document.getElementById('loginPassword').value; 
+    if ( !regExpNumber.test(id) ) {
+      alert("로그인 할 교사를 선택해주세요.");
+      return false
+    }
+
+    $.ajax({
+        url: '/login',
+        type : "POST",
+        data : {
+            id: id,
+            password: password
+        }, 
+        error : function(error) {
+          if(error.status == 423) {
+            document.getElementById('loginPassword').value = "";
+            alert("아이디 또는 비밀번호가 잘못되었습니다.");
+          } else if (error.status == 422) {
+            alert("입력한 값이 올바르지 않습니다.")
+          }else {
+            alert("알 수 없는 오류가 발생하였습니다.\n학생생활안전부에 문의해주세요.")
+          }
+          
+        },
+        success: function(data) {
+          window.location.reload();
+        }
+    })
+    return ;
+  }
+</script>
+<!-- jQuery -->
+
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

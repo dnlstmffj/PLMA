@@ -11,6 +11,7 @@ const crypto = require('crypto');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session); 
 
+
 var app = express();
 
 var options ={                                              
@@ -44,7 +45,13 @@ function isEmpty(value){
       return true
   } else return false
 };
+setInterval(function(){ 
+  connection.end();
 
+  setTimeout(function(){ consol.log("hi"); }, 2000);
+
+  connection.connect();
+}, 5000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -57,8 +64,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.post('/get_user', function(req, res){
-
+app.post('/get_user', [check('grade').isInt({ min: 1, max: 3 }), check('class').isInt({ min: 1, max: 15 }), check('num').isInt({ min: 1, max: 50 }), check('mp').isInt(), check('lp').isInt(), check('mm').isInt(), check('lm').isInt(), check('ls').isInt(), check('ms').isInt()], function(req, res){
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  }
   var query = "SELECT * FROM user WHERE 1=1 ";
   if(req.body.grade) query += 'AND grade=' + req.body.grade;
   if(req.body.class) query += ' AND class=' + req.body.class;
@@ -295,6 +305,44 @@ app.post('/get_teacher', [check('id').isInt()], function(req, res){
     res.json(results);
   });
 });
+
+app.post('/login', [check('id').isInt(), check('password').isAlphanumeric()], function(req, res){
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  }
+  connection.query("SELECT * FROM teacher WHERE id=?", [req.body.id],function (error, results, fields) {
+    if (error) {
+      console.log(error);
+      return res.status(500).json({ errors: error.code })
+    }
+    var passwordHash = crypto.createHash('sha512').update(req.body.password).digest('base64');
+    if(results[0].password == passwordHash) { 
+      req.session.uid = results[0].id;   
+      req.session.name = results[0].name;      
+      req.session.job = results[0].job;         
+      req.session.isLogined = true; 
+      req.session.save(function(){                               
+        res.end();
+      });
+      
+    }
+    else res.status(423).end();
+  });
+});
+
+app.post('/logout',  function(req, res){
+  delete req.session.uid;
+  delete req.session.isLogined;
+  delete req.session.name;
+  delete req.session.job;
+
+  req.session.save(function(){
+    res.end();
+  });
+  
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

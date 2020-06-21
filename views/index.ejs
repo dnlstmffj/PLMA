@@ -125,20 +125,20 @@
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           
-          <span class="d-none d-md-inline">Alexander Pierce</span>
+          <span class="d-none d-md-inline"><%=admin.name%></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <!-- User image -->
           <li class="user-header bg-primary">
             <img src="./top_logo.png" style="width:240px; height:60px;" alt="User Image">
             <p>
-              <h5>강창완</h5>
-              <h7>학생생활안전부</h7>
+              <h5><%=admin.name%></h5>
+              <h7><%=admin.job%></h7>
             </p>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat ">로그아웃</a>
+            <a href="#" class="btn btn-default btn-flat" onclick="logout()">로그아웃</a>
           </li>
         </ul>
       </li>

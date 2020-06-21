@@ -11,43 +11,78 @@ const connection = mysql.createConnection({
 connection.connect();
 /* GET home page. */
 router.get('/view', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   connection.query('SELECT * FROM user', function (error, results, fields) {
     if (error) {
       console.log(error);
     } 
-    res.render('index', { title: 'Express', page:'view', name:'상벌점 조회', users: results});
+    res.render('index', { admin: req.session, page:'view', name:'상벌점 조회', users: results});
   });
 });
 router.get('/apply', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   connection.query('SELECT * FROM reason WHERE dpc = 0', function (error, results, fields) {
     if (error) {
       console.log(error);
     } 
-    res.render('index', { title: 'Express', page:'apply', name:'상벌점 조회', reasons: results});
+    res.render('index', { admin: req.session, title: 'Express', page:'apply', name:'상벌점 조회', reasons: results});
   });
 });
 router.get('/student', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   connection.query('SELECT * FROM user', function (error, results, fields) {
     if (error) {
       console.log(error);
     } 
-    res.render('index', { title: 'Express', page:'student', name:'상벌점 조회', data: results});
+    res.render('index', { admin: req.session, title: 'Express', page:'student', name:'상벌점 조회', data: results});
   });
 });
 router.get('/teacher', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   connection.query('SELECT * FROM teacher', function (error, results, fields) {
     if (error) {
       console.log(error);
     } 
-    res.render('index', { title: 'Express', page:'teacher', name:'상벌점 조회', data: results});
+    res.render('index', { admin: req.session, title: 'Express', page:'teacher', name:'상벌점 조회', data: results});
   });
 });
 router.get('/', function(req, res, next) {
-
-  res.render('login');
+  if(req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/view');
+    return res.end();
+  }
+  connection.query('SELECT id, name, job FROM teacher WHERE dpc = 0', function (error, results, fields) {
+    if (error) {
+      console.log(error);
+    } 
+    res.render('login', {data: results});
+  });
+  
 
 });
 router.get('/history', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   var resultsTeacher=[], resultsUser=[], resultsReason=[];
   connection.query('SELECT * FROM teacher', function (error, results, fields) {
     if (error) {
@@ -74,7 +109,7 @@ router.get('/history', function(req, res, next) {
           if (error) {
             console.log(error);
           } 
-          res.render('index', { title: 'Express', page:'history', name:'상벌점 조회', data: results, teacherData: resultsTeacher, userData: resultsUser, reasonData: resultsReason});
+          res.render('index', { admin: req.session, title: 'Express', page:'history', name:'상벌점 조회', data: results, teacherData: resultsTeacher, userData: resultsUser, reasonData: resultsReason});
         });
       });
     });
@@ -82,11 +117,16 @@ router.get('/history', function(req, res, next) {
   
 });
 router.get('/reason', function(req, res, next) {
+  if(!req.session.isLogined) {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
   connection.query('SELECT * FROM reason', function (error, results, fields) {
     if (error) {
       console.log(error);
     } 
-    res.render('index', { title: 'Express', page:'reason', name:'상벌점 조회', data: results});
+    res.render('index', { admin: req.session, title: 'Express', page:'reason', name:'상벌점 조회', data: results});
   });
 });
 module.exports = router;
