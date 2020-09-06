@@ -17,13 +17,14 @@ var app = express();
 var options ={                                              
   host: 'localhost',
   port: 3306,
-  user:'root',
-  password:'Rycgar123!',
+  user:'username',
+  password:'password',
   database:'plma'
 };
+
 var sessionStore = new MySQLStore(options);  
 app.use(session({                                        
-  secret:"rycgar123!",
+  secret:"secret",
   resave:false,
   saveUninitialized:true,
   store: sessionStore                                         
@@ -33,8 +34,8 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host:'localhost',
-  user:'root',
-  password:'Rycgar123!',
+  user:'username',
+  password:'password',
   database:'plma',
   multipleStatements: true
 });
